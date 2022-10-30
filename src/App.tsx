@@ -1,8 +1,9 @@
 import React from 'react'
 import "./App.less"
+import Login from "./pages/login"
 
 const App = () => {
-    return <div>1234</div>
+    return <div><Login/></div>
 }
 
 export default App
