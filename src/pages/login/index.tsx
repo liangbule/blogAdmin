@@ -23,7 +23,7 @@ const App: React.FC = () => {
             <Form.Item
                 label="Username"
                 name="username"
-                rules={[{required: true, message: 'Please input your username!'}]}
+                rules={[{required: true, message: '请输入用户名!'}]}
             >
                 <Input/>
             </Form.Item>
@@ -31,18 +31,18 @@ const App: React.FC = () => {
             <Form.Item
                 label="Password"
                 name="password"
-                rules={[{required: true, message: 'Please input your password!'}]}
+                rules={[{required: true, message: '请输入密码!'}]}
             >
                 <Input.Password/>
             </Form.Item>
 
             <Form.Item name="remember" valuePropName="checked" wrapperCol={{offset: 8, span: 16}}>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox>记住我</Checkbox>
             </Form.Item>
 
             <Form.Item wrapperCol={{offset: 8, span: 16}}>
                 <Button type="primary" htmlType="submit">
-                    Submit
+                    登录
                 </Button>
             </Form.Item>
         </Form>

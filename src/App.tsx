@@ -1,9 +1,16 @@
 import React from 'react'
-import "./App.less"
-import Login from "./pages/login"
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from "./pages/home"
+import "./style/App.scss"
+import "./style/base.scss"
 
 const App = () => {
-    return <div><Login/></div>
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+            </Routes>
+        </Router>
+    )
 }
-
 export default App

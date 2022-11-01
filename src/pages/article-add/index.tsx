@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Index = () => {
+const Index: React.FC = () => {
     return (
         <div>
-            layout
+            添加文章
         </div>
     );
 };

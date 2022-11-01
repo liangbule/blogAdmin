@@ -2,7 +2,7 @@ import {lazy} from 'react'
 import {Route} from 'react-router-dom'
 // TODO @loadable/component后续采用
 
-const Layout = lazy(() => import('../common/layout'))
+// const Layout = lazy(() => import('../layout'))
 const Login = lazy(() => import('../pages/login'))
 const ArticleList = lazy(() => import('../pages/article-list'))
 const AddArticle = lazy(() => import('../pages/article-add'))
@@ -18,7 +18,7 @@ const AddArticle = lazy(() => import('../pages/article-add'))
 const Tags = lazy(() => import('../pages/tags'))
 const TagAdd = lazy(() => import('../pages/tag-add'))
 const Home = lazy(() => import('../pages/home'))
-const Page404 = lazy(() => import('../pages/pages404 '))
+// const Page404 = lazy(() => import('../pages/pages404 '))
 
 export const routes = [
     {
@@ -27,7 +27,7 @@ export const routes = [
     },
     {
         path: '/',
-        component: Layout,
+        component: Home,
         children: [
             {
                 path: '/article',
@@ -81,23 +81,14 @@ export const routes = [
                 path: '/tags-add',
                 component: TagAdd
             },
-            {
-                path: '/',
-                component: Home
-            }
+            // {
+            //     path: '/',
+            //     component: Home
+            // }
         ]
     },
-    {
-        path: '*',
-        component: Page404
-    }
+    // {
+    //     path: '*',
+    //     component: Page404
+    // }
 ]
-
-export function RouteWithSubRoutes(route) {
-    return (
-        <Route
-            path={route.path}
-            render={props => <route.component {...props} {...route} />}
-        />
-    )
-}

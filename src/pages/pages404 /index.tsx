@@ -1,9 +1,8 @@
 const Page404 = () => {
     return (
-        <fieldset>
-            <legend>Page404</legend>
+        <div>
             <h1>页面不见了</h1>
-        </fieldset>
+        </div>
     )
 }
 
