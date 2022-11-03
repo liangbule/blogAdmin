@@ -1,15 +1,17 @@
 import {
-    DesktopOutlined,
-    FileOutlined,
-    PieChartOutlined,
-    TeamOutlined,
+    DesktopOutlined, FileOutlined,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined, PieChartOutlined, TeamOutlined,
+    UploadOutlined,
     UserOutlined,
+    VideoCameraOutlined,
 } from '@ant-design/icons';
+import {Layout, Menu} from 'antd';
 import type {MenuProps} from 'antd';
-import {Breadcrumb, Layout, Menu} from 'antd';
 import React, {useState} from 'react';
 
-const {Header, Content, Footer, Sider} = Layout;
+const {Header, Sider, Content} = Layout;
+import "./index.less"
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -42,30 +44,45 @@ const items: MenuItem[] = [
     getItem('异常页', '12', <FileOutlined/>),
     getItem('个人中心', '13', <FileOutlined/>),
 
-
 ];
-
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
         <Layout style={{minHeight: '100vh'}}>
-            <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-                <div style={{height: '65px'}} className="logo"/>
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/>
+            <Sider trigger={null} collapsible collapsed={collapsed}>
+                <div className="logo" style={{height: 60}}/>
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={['1']}
+                    items={items}
+                />
             </Sider>
             <Layout className="site-layout">
-                <Header className="site-layout-background" style={{padding: 0}}/>
-                <Content style={{margin: '0 16px'}}>
-                    <Breadcrumb style={{margin: '16px 0'}}>
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
-                        Bill is a cat.
-                    </div>
+                <Header className="site-layout-background" style={{
+                    padding: 0,
+                    background: "#fff",
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row'
+                }}>
+                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                        className: 'trigger',
+                        onClick: () => setCollapsed(!collapsed),
+                    })}
+                    <div style={{height: 40}}>头像</div>
+                </Header>
+                <Content
+                    className="site-layout-background"
+                    style={{
+                        margin: '24px 16px',
+                        padding: 24,
+                        minHeight: 280,
+                    }}
+                >
+                    Content
                 </Content>
-                <Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>
         </Layout>
     );

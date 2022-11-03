@@ -1,5 +1,6 @@
 import {lazy} from 'react'
 import {Route} from 'react-router-dom'
+import {DesktopOutlined} from "@ant-design/icons";
 // TODO @loadable/component后续采用
 
 // const Layout = lazy(() => import('../layout'))
@@ -23,6 +24,11 @@ const Home = lazy(() => import('../pages/home'))
 export const routes = [
     {
         path: '/login',
+        name: "login",
+        meta: {
+            icon: <DesktopOutlined/>,
+            title: "登录"
+        },
         component: Login
     },
     {

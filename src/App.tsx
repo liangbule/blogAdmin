@@ -4,6 +4,7 @@ import Home from "./pages/home"
 import "./style/App.scss"
 import "./style/base.scss"
 
+
 const App = () => {
     return (
         <Router>
