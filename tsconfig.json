@@ -20,6 +20,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "react-app-env.d.ts"
+    //配置的.d.ts文件
   ]
 }

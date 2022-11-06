@@ -2,24 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const cont = process.env.NODE_ENV === "production"
-//自定义loader
-const getStyleLoader = (pre) => {
-    return [
-        cont ? MiniCssExtractPlugin.loader : "style-loader", 'css-loader',
-        {
-            // 配合packge.json 文件browserslist处理兼容问题
-            loader: "postcss-loader",
-            options: {
-                postcssOptions: {
-                    plugins: [
-                        "postcss-preset-env",
-                    ]
-                }
-            }
-        },
-        pre,
-    ].filter(Boolean)
-}
 module.exports = {
     //    模式
     mode: "development",
@@ -42,48 +24,15 @@ module.exports = {
             //    loader配置
             {
                 test: /\.css$/, // 检测.css结尾文件
-                use: getStyleLoader()
+                use: ["style-loader", "css-loader"]
             },
             {
                 test: /\.less$/,
-                use: [
-                    {
-                        loader: "css-loader"
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    "postcss-preset-env",
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        loader: "less-loader"
-                    }
-                ]
+                use: ["style-loader", "css-loader", "less-loader"]
             },
             {
                 test: /\.s[ac]ss$/,
-                use: [{
-                    loader: "css-loader"
-                },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    "postcss-preset-env",
-
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        loader: "sass-loader",
-                    }]
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(jpe?g|png|gif|svg|woff|woff2|eot|ttf|otf)$/i,

@@ -12,6 +12,7 @@ import React, {useState} from 'react';
 
 const {Header, Sider, Content} = Layout;
 import "./index.less"
+import {Navigate, Outlet, useNavigate} from "react-router-dom";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -47,7 +48,13 @@ const items: MenuItem[] = [
 ];
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
-
+    const Navigate = useNavigate()
+    const onClick = (e: any) => {
+        console.log(e)
+        if (e.key === "1") {
+            Navigate("article")
+        }
+    }
     return (
         <Layout style={{minHeight: '100vh'}}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -57,6 +64,7 @@ const App: React.FC = () => {
                     mode="inline"
                     defaultSelectedKeys={['1']}
                     items={items}
+                    onClick={onClick}
                 />
             </Sider>
             <Layout className="site-layout">
@@ -81,7 +89,7 @@ const App: React.FC = () => {
                         minHeight: 280,
                     }}
                 >
-                    Content
+                    <Outlet/>
                 </Content>
             </Layout>
         </Layout>

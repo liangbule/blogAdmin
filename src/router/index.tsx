@@ -1,5 +1,5 @@
-import {lazy} from 'react'
-import {Route} from 'react-router-dom'
+import React, {lazy, Suspense} from 'react'
+import {Route, RouteObject, useRoutes} from 'react-router-dom'
 import {DesktopOutlined} from "@ant-design/icons";
 // TODO @loadable/component后续采用
 
@@ -20,8 +20,17 @@ const Tags = lazy(() => import('../pages/tags'))
 const TagAdd = lazy(() => import('../pages/tag-add'))
 const Home = lazy(() => import('../pages/home'))
 // const Page404 = lazy(() => import('../pages/pages404 '))
-
-export const routes = [
+// 声明类型
+namespace SyncRoute {
+    export type Routes = {
+        path: string,
+        name: string,
+        meta: any,
+        element: React.LazyExoticComponent<any>,
+        children?: Routes[]
+    }
+}
+const RouteTable: any = [
     {
         path: '/login',
         name: "login",
@@ -29,19 +38,19 @@ export const routes = [
             icon: <DesktopOutlined/>,
             title: "登录"
         },
-        component: Login
+        element: Login
     },
     {
         path: '/',
-        component: Home,
+        element: Home,
         children: [
             {
                 path: '/article',
-                component: ArticleList
+                element: ArticleList
             },
             {
                 path: '/article-add',
-                component: AddArticle
+                element: AddArticle
             },
             // {
             //     path: '/article-classify',
@@ -81,11 +90,11 @@ export const routes = [
             // },
             {
                 path: '/tags',
-                component: Tags
+                element: Tags
             },
             {
                 path: '/tags-add',
-                component: TagAdd
+                element: TagAdd
             },
             // {
             //     path: '/',
@@ -98,3 +107,20 @@ export const routes = [
     //     component: Page404
     // }
 ]
+const syncRouter = (table: SyncRoute.Routes[]): RouteObject[] => {
+    let mRouteTable: RouteObject[] = []
+    table.forEach(route => {
+        mRouteTable.push({
+            path: route.path,
+            element: (
+                <Suspense fallback={<div>路由加载ing...</div>}>
+                    <route.element/>
+                </Suspense>
+            ),
+            children: route.children && syncRouter(route.children)
+        })
+    })
+    return mRouteTable
+}
+// 直接暴露成一个组件调用
+export default () => useRoutes(syncRouter(RouteTable))

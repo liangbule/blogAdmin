@@ -1,0 +1,28 @@
+.logBg {
+  min-height: 100vh;
+  background-image: url("../../../public/login-bg.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  .loginInput {
+    position: absolute;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    /* 主要内容 */
+    background: rgba(0, 0, 0, .1);
+    /* 模糊大小就是靠的blur这个函数中的数值大小 */
+    backdrop-filter: blur(5px);
+    color: #ecf1f5;
+    padding: 20px;
+    border-radius: 28px;
+  }
+
+  .ant-form-item-label > label {
+    color: #ecf1f5;
+  }
+}
+
