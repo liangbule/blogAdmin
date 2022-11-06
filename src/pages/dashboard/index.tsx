@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const DashBoard = () => {
     return (
         <div>
-            添加标签
+            仪表盘
         </div>
     );
 };
 
-export default Index;
+export default DashBoard;

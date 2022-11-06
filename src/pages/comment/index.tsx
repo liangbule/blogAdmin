@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const Comment = () => {
     return (
         <div>
-            添加标签
+            评论管理
         </div>
     );
 };
 
-export default Index;
+export default Comment;

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const MusicAdd = () => {
     return (
         <div>
-            添加标签
+            添加音乐
         </div>
     );
 };
 
-export default Index;
+export default MusicAdd;

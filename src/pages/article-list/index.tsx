@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Index = () => {
+const ArticleList = () => {
     return (
         <div>
             文章列表
@@ -8,4 +8,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default ArticleList;

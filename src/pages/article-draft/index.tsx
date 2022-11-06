@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const ArticleDraft = () => {
     return (
         <div>
-            添加标签
+            草稿箱
         </div>
     );
 };
 
-export default Index;
+export default ArticleDraft;

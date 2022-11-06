@@ -1,7 +1,11 @@
 import React, {useEffect} from 'react'
 import MarkdownIt from "markdown-it"
 
-const md = new MarkdownIt()
+const md = new MarkdownIt({
+    html: true, // 在源码中启用HTML标签
+    linkify: true, // 将类似URL的文本自动转换为链接
+    breaks: true, // 转换段落里的 '\n' 到 <br>
+})
 
 interface articleProps {
     content: string,

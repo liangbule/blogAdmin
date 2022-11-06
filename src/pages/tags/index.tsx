@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const Tags = () => {
     return (
         <div>
-            标签
+            标签列表
         </div>
     );
 };
 
-export default Index;
+export default Tags;

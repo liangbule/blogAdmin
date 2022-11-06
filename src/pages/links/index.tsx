@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const Links = () => {
     return (
         <div>
-            添加标签
+            友情连接
         </div>
     );
 };
 
-export default Index;
+export default Links;

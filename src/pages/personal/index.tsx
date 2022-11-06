@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Index = () => {
+const Personal = () => {
     return (
         <div>
-            添加标签
+            个人信息
         </div>
     );
 };
 
-export default Index;
+export default Personal;

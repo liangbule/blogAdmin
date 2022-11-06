@@ -33,7 +33,6 @@ function getItem(
 
 const items: MenuItem[] = [
     getItem('仪表盘', 'dashboard', <PieChartOutlined/>),
-    getItem('用户管理', 'user', <DesktopOutlined/>),
     getItem('文章管理', 'article', <UserOutlined/>, [
         getItem('文章列表', 'article-list'),
         getItem('添加文章', 'article-add'),
@@ -41,14 +40,17 @@ const items: MenuItem[] = [
         getItem('文章归类', 'article-class')
     ]),
     getItem('标签管理', 'tags', <TeamOutlined/>, [
-        getItem('全部标签', 'tags'),
+        getItem('全部标签', 'tags-list'),
         getItem('新增标签', 'tags-add')
     ]),
-    getItem('友情连接', '9', <FileOutlined/>),
-    getItem('分类', '10', <FileOutlined/>),
-    getItem('时间轴', '11', <FileOutlined/>),
-    getItem('异常页', '12', <FileOutlined/>),
-    getItem('个人中心', '13', <FileOutlined/>),
+    getItem('友情连接', 'links', <FileOutlined/>),
+    getItem('评论管理', 'comment', <FileOutlined/>),
+    getItem('音乐管理', 'music', <FileOutlined/>, [
+        getItem('音列表乐', 'music-list'),
+        getItem('添加音乐', 'music-add'),
+    ]),
+    getItem('用户管理', 'user', <DesktopOutlined/>),
+    getItem('个人信息', 'personal', <FileOutlined/>),
 
 ];
 

@@ -5,20 +5,22 @@ import {DesktopOutlined} from "@ant-design/icons";
 
 // const Layout = lazy(() => import('../layout'))
 const Login = lazy(() => import('../pages/login'))
+const Dashboard = lazy(() => import('../pages/dashboard'))
 const ArticleList = lazy(() => import('../pages/article-list'))
 const AddArticle = lazy(() => import('../pages/article-add'))
-// const ArticleClassify = lazy(() => import('../pages/article-classify'))
-// const ArticleComments = lazy(() => import('../pages/article-comments'))
-// const ArticleDraft = lazy(() => import('../pages/article-draft'))
-// const AddMessage = lazy(() => import('../pages/message-add'))
-// const MessageList = lazy(() => import('../pages/messages-list'))
-// const MusicAdd = lazy(() => import('../pages/music-add'))
-// const MusicList = lazy(() => import('../pages/music-list'))
+const ArticleDraft = lazy(() => import('../pages/article-draft'))
+const ArticleClass = lazy(() => import('../pages/article-class'))
+const Comments = lazy(() => import('../pages/comment'))
+const MusicAdd = lazy(() => import('../pages/music-add'))
+const MusicList = lazy(() => import('../pages/music'))
 // const ProjectAdd = lazy(() => import('../pages/project-add'))
 // const Projects = lazy(() => import('../pages/projects'))
 const Tags = lazy(() => import('../pages/tags'))
 const TagAdd = lazy(() => import('../pages/tag-add'))
 const Home = lazy(() => import('../pages/home'))
+const Personal = lazy(() => import('../pages/personal'))
+const User = lazy(() => import('../pages/user'))
+const Links = lazy(() => import('../pages/links'))
 // const Page404 = lazy(() => import('../pages/pages404 '))
 // 声明类型
 namespace SyncRoute {
@@ -45,41 +47,50 @@ const RouteTable: any = [
         element: Home,
         children: [
             {
-                path: '/article',
+                name: "仪表盘",
+                path: '/Dashboard',
+                element: Dashboard
+            },
+            {
+                name: "文章列表",
+                path: '/article-list',
                 element: ArticleList
             },
             {
+                name: "添加文章",
                 path: '/article-add',
                 element: AddArticle
             },
-            // {
-            //     path: '/article-classify',
-            //     component: ArticleClassify
-            // },
-            // {
-            //     path: '/discuss',
-            //     component: ArticleComments
-            // },
-            // {
-            //     path: '/article-draft',
-            //     component: ArticleDraft
-            // },
-            // {
-            //     path: '/message-add',
-            //     component: AddMessage
-            // },
-            // {
-            //     path: '/message',
-            //     component: MessageList
-            // },
-            // {
-            //     path: '/music-add',
-            //     component: MusicAdd
-            // },
-            // {
-            //     path: '/music',
-            //     component: MusicList
-            // },
+            {
+                name: "文章归类",
+                path: '/article-class',
+                element: ArticleClass
+            },
+            {
+                name: "草稿箱",
+                path: '/article-draft',
+                element: ArticleDraft
+            },
+            {
+                name: "评论管理",
+                path: '/links',
+                element: Links
+            },
+            {
+                name: "评论管理",
+                path: '/comment',
+                element: Comments
+            },
+            {
+                name: "添加音乐",
+                path: '/music-add',
+                element: MusicAdd
+            },
+            {
+                name: "音乐列表",
+                path: '/music-list',
+                element: MusicList
+            },
             // {
             //     path: '/project-add',
             //     component: ProjectAdd
@@ -89,17 +100,25 @@ const RouteTable: any = [
             //     component: Projects
             // },
             {
-                path: '/tags',
+                name: "标签列表",
+                path: '/tags-list',
                 element: Tags
             },
             {
+                name: "添加标签",
                 path: '/tags-add',
                 element: TagAdd
             },
-            // {
-            //     path: '/',
-            //     component: Home
-            // }
+            {
+                name: "个人信息",
+                path: '/personal',
+                element: Personal
+            },
+            {
+                name: "用户管理",
+                path: '/user',
+                element: User
+            }
         ]
     },
     // {
