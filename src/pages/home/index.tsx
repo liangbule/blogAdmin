@@ -34,8 +34,8 @@ function getItem(
 const items: MenuItem[] = [
     getItem('仪表盘', 'dashboard', <PieChartOutlined/>),
     getItem('文章管理', 'article', <UserOutlined/>, [
-        getItem('文章列表', 'article-list'),
-        getItem('添加文章', 'article-add'),
+        getItem('文章列表', 'article/article-list'),
+        getItem('添加文章', 'article/article-add'),
         getItem('草稿箱', 'article-draft'),
         getItem('文章归类', 'article-class')
     ]),

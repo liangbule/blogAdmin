@@ -1,6 +1,7 @@
 import React, {lazy, Suspense} from 'react'
-import {Route, RouteObject, useRoutes} from 'react-router-dom'
+import {Route, useRoutes} from 'react-router-dom'
 import {DesktopOutlined} from "@ant-design/icons";
+import {Spin} from "antd";
 // TODO @loadable/component后续采用
 
 // const Layout = lazy(() => import('../layout'))
@@ -32,6 +33,8 @@ namespace SyncRoute {
         children?: Routes[]
     }
 }
+
+
 const RouteTable: any = [
     {
         path: '/login',
@@ -44,21 +47,22 @@ const RouteTable: any = [
     },
     {
         path: '/',
+        name: "首页",
         element: Home,
         children: [
             {
                 name: "仪表盘",
-                path: '/Dashboard',
+                path: '/dashboard',
                 element: Dashboard
             },
             {
                 name: "文章列表",
-                path: '/article-list',
+                path: 'article/article-list',
                 element: ArticleList
             },
             {
                 name: "添加文章",
-                path: '/article-add',
+                path: 'article/article-add',
                 element: AddArticle
             },
             {
@@ -126,13 +130,14 @@ const RouteTable: any = [
     //     component: Page404
     // }
 ]
-const syncRouter = (table: SyncRoute.Routes[]): RouteObject[] => {
-    let mRouteTable: RouteObject[] = []
+const syncRouter = (table: SyncRoute.Routes[]): any[] => {
+    let mRouteTable: any[] = []
     table.forEach(route => {
         mRouteTable.push({
+            name: route.name,
             path: route.path,
             element: (
-                <Suspense fallback={<div>路由加载ing...</div>}>
+                <Suspense fallback={<Spin tip="Loading..."/>}>
                     <route.element/>
                 </Suspense>
             ),
@@ -141,5 +146,6 @@ const syncRouter = (table: SyncRoute.Routes[]): RouteObject[] => {
     })
     return mRouteTable
 }
+console.log(syncRouter(RouteTable))
 // 直接暴露成一个组件调用
 export default () => useRoutes(syncRouter(RouteTable))

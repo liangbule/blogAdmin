@@ -1,9 +1,10 @@
 import React from 'react';
+import Table from "../../components/table"
 
 const ArticleList = () => {
     return (
         <div>
-            文章列表
+            <Table/>
         </div>
     );
 };
