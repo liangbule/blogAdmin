@@ -3,7 +3,6 @@ import ReactTable from "./router"
 import "./style/App.scss"
 import "./style/base.scss"
 
-
 const App = () => {
     return (
         <ReactTable/>

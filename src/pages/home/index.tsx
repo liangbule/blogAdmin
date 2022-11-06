@@ -12,7 +12,8 @@ import React, {useState} from 'react';
 
 const {Header, Sider, Content} = Layout;
 import "./index.less"
-import {Navigate, Outlet, useNavigate} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
+import {CommonUtils} from "../../utils";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -31,14 +32,18 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('仪表盘', '1', <PieChartOutlined/>),
-    getItem('用户管理', '2', <DesktopOutlined/>),
-    getItem('留言', 'sub1', <UserOutlined/>, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
+    getItem('仪表盘', 'dashboard', <PieChartOutlined/>),
+    getItem('用户管理', 'user', <DesktopOutlined/>),
+    getItem('文章管理', 'article', <UserOutlined/>, [
+        getItem('文章列表', 'article-list'),
+        getItem('添加文章', 'article-add'),
+        getItem('草稿箱', 'article-draft'),
+        getItem('文章归类', 'article-class')
     ]),
-    getItem('标签', 'sub2', <TeamOutlined/>, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    getItem('标签管理', 'tags', <TeamOutlined/>, [
+        getItem('全部标签', 'tags'),
+        getItem('新增标签', 'tags-add')
+    ]),
     getItem('友情连接', '9', <FileOutlined/>),
     getItem('分类', '10', <FileOutlined/>),
     getItem('时间轴', '11', <FileOutlined/>),
@@ -46,14 +51,19 @@ const items: MenuItem[] = [
     getItem('个人中心', '13', <FileOutlined/>),
 
 ];
+
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const Navigate = useNavigate()
     const onClick = (e: any) => {
-        console.log(e)
-        if (e.key === "1") {
-            Navigate("article")
-        }
+        console.log('e', e)
+        Navigate(e.key)
+    }
+    const onOpenChange = (openKeys: any) => {
+        console.log("SubMenu 展开/关闭的回调", openKeys)
+    }
+    const onSelect = (e: any) => {
+        console.log("被选中时调用")
     }
     return (
         <Layout style={{minHeight: '100vh'}}>
@@ -65,6 +75,8 @@ const App: React.FC = () => {
                     defaultSelectedKeys={['1']}
                     items={items}
                     onClick={onClick}
+                    onSelect={onSelect}
+                    onOpenChange={onOpenChange}
                 />
             </Sider>
             <Layout className="site-layout">
