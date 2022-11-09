@@ -15,66 +15,103 @@ const columns: ColumnsType<DataType> = [
         title: 'ID',
         dataIndex: 'key',
         key: 'key',
+        width: 100,
+        fixed: 'left',
+        ellipsis: true,
         render: text => <a>{text}</a>,
     },
     {
         title: '标题',
         dataIndex: 'title',
         key: 'title',
+        width: 100,
+        fixed: 'left',
+        ellipsis: true,
     },
     {
-        title: '简介',
-        dataIndex: 'age',
-        key: 'age',
+        title: '文章描述',
+        dataIndex: 'description',
+        key: 'description',
+        ellipsis: true,
     },
     {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
+        title: '作者',
+        dataIndex: 'author',
+        key: 'author',
+        ellipsis: true,
+    },
+    {
+        title: '关键词',
+        dataIndex: 'keyWord',
+        key: 'keyWord',
+        ellipsis: true,
+    },
+    {
+        title: '文章内容',
+        dataIndex: 'content',
+        key: 'content',
+        ellipsis: true,
+    },
+    {
+        title: '点赞数量',
+        dataIndex: 'lives',
+        key: 'lives',
+        ellipsis: true,
+    },
+    {
+        title: '浏览数量',
+        dataIndex: 'browse',
+        key: 'browse',
+        ellipsis: true,
     },
     {
         title: '创建时间',
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'created',
+        key: 'created',
+        ellipsis: true,
     },
     {
         title: '更新时间',
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'updated',
+        key: 'updated',
+        ellipsis: true,
     },
-    {
-        title: 'Tags',
-        key: 'tags',
-        dataIndex: 'tags',
-        render: (_, {tags}) => (
-            <>
-                {tags.map(tag => {
-                    let color = tag.length > 5 ? 'geekblue' : 'green';
-                    if (tag === 'loser') {
-                        color = 'volcano';
-                    }
-                    return (
-                        <Tag color={color} key={tag}>
-                            {tag.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </>
-        ),
-    },
+    // {
+    //     title: 'Tags',
+    //     key: 'tags',
+    //     dataIndex: 'tags',
+    //     fixed: 'right',
+    //     width: 100,
+    //     render: (_, {tags}) => (
+    //         <>
+    //             {tags.map(tag => {
+    //                 let color = tag.length > 5 ? 'geekblue' : 'green';
+    //                 if (tag === 'loser') {
+    //                     color = 'volcano';
+    //                 }
+    //                 return (
+    //                     <Tag color={color} key={tag}>
+    //                         {tag.toUpperCase()}
+    //                     </Tag>
+    //                 );
+    //             })}
+    //         </>
+    //     ),
+    // },
     {
         title: '操作',
         key: 'action',
-        render: (_, record) => (
-            <Space size="middle">
-                <a>Invite {record.title}</a>
-                <a>Delete</a>
-            </Space>
+        fixed: 'right',
+        width: 100,
+        render: () => (
+            <Tag color={"green"}>
+                删除
+            </Tag>
         ),
     },
 ];
 
-const data: DataType[] = [
+const data: any = [
     {
         key: '1',
         title: 'ReactNative',
@@ -90,14 +127,22 @@ const data: DataType[] = [
         tags: ['loser'],
     },
     {
-        key: '3',
-        title: 'React-router',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
+        key: "3",
+        title: "ReactNative",
+        author: "凉不乐",
+        description: "描述ReactNative环境搭建",
+        keyWord: "ReactNative",
+        content: "reacthanekahdjadjabjdadanjdbajbad",
+        cover: "images",
+        browse: 100,
+        lives: 99,
+        category_id: "27878371871831",
+        created: "时间",
+        updated: "时间",
+        tags: ["删除"]
     },
 ];
 
-const App: React.FC = () => <Table columns={columns} dataSource={data}/>;
+const App: React.FC = () => <Table columns={columns} dataSource={data} scroll={{x: 1500}}/>;
 
 export default App;

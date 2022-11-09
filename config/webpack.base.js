@@ -13,6 +13,7 @@ module.exports = {
         path: cont ? path.resolve(__dirname, '../dist') : undefined,
         //    文件名
         filename: "js/[name].js",
+        publicPath: "/",
         chunkFilename: "js/[name].chunk.js",
         clean: true
     },
