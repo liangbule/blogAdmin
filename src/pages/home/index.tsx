@@ -15,6 +15,8 @@ import "./index.less"
 import {Outlet, useNavigate} from "react-router-dom";
 import {CommonUtils} from "../../utils";
 
+import {connect} from "react-redux"
+
 type MenuItem = Required<MenuProps>['items'][number];
 
 function getItem(
@@ -54,7 +56,7 @@ const items: MenuItem[] = [
 
 ];
 
-const App: React.FC = () => {
+const App: React.FC = (props) => {
     const [collapsed, setCollapsed] = useState(false);
     const Navigate = useNavigate()
     const onClick = (e: any) => {
@@ -67,6 +69,7 @@ const App: React.FC = () => {
     const onSelect = (e: any) => {
         console.log("被选中时调用")
     }
+    console.log("this",props)
     return (
         <Layout style={{minHeight: '100vh'}}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -109,5 +112,8 @@ const App: React.FC = () => {
         </Layout>
     );
 };
+// 1. 调用connect 方法订阅store , store 改变 更新view
+// 2. connect获取store中状态 将通过组件props映射给组件
+// 3. connect或者dispatch方法 
 
-export default App;
+export default connect()(App);
