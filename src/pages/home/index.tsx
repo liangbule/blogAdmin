@@ -115,5 +115,7 @@ const App: React.FC = (props) => {
 // 1. 调用connect 方法订阅store , store 改变 更新view
 // 2. connect获取store中状态 将通过组件props映射给组件
 // 3. connect或者dispatch方法 
-
+const mapStoreToProps = () => {
+    
+}
 export default connect()(App);
